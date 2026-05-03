@@ -15,6 +15,8 @@ const links = [
 export default function Nav() {
   const pathname = usePathname();
 
+  if (pathname === "/") return null;
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -8 }}
