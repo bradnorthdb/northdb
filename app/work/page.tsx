@@ -58,7 +58,7 @@ const fadeUp = {
 
 export default function Work() {
   return (
-    <div className="min-h-screen pt-28 pb-20 px-8 md:px-16">
+    <div className="min-h-screen pt-48 pb-20 px-8 md:px-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
