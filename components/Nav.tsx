@@ -15,7 +15,7 @@ const links = [
 export default function Nav() {
   const pathname = usePathname();
 
-  if (pathname === "/") return null;
+  const isHome = pathname === "/";
 
   return (
     <motion.header
@@ -31,22 +31,24 @@ export default function Nav() {
         </Link>
       </div>
 
-      {/* Nav links row */}
-      <nav className="flex items-center justify-between px-40 pb-8 border-b border-stone-800">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={`text-xl tracking-[0.4em] uppercase transition-opacity duration-200 ${
-              pathname === link.href
-                ? "opacity-100 text-white"
-                : "opacity-40 text-white hover:opacity-80"
-            }`}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
+      {/* Nav links row — hidden on homepage */}
+      {!isHome && (
+        <nav className="flex items-center justify-between px-40 pb-8 border-b border-stone-800">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-xl tracking-[0.4em] uppercase transition-opacity duration-200 ${
+                pathname === link.href
+                  ? "opacity-100 text-white"
+                  : "opacity-40 text-white hover:opacity-80"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </motion.header>
   );
 }

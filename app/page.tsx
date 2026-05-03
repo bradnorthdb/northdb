@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 20 },
@@ -14,7 +14,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function Home() {
   return (
-    <div className="pt-[168px]">
+    <div className="pt-[120px]">
       {/* Full-width hero image */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -23,12 +23,13 @@ export default function Home() {
         className="relative w-full"
         style={{ height: "70vh" }}
       >
-        {/* Swap this div for a next/image when photos are ready */}
-        <div className="absolute inset-0 bg-stone-800 flex items-center justify-center">
-          <span className="text-xs tracking-widest uppercase text-stone-600">
-            Hero Image Coming Soon
-          </span>
-        </div>
+        <Image
+          src="/hero.jpg"
+          alt="North Design Build — living room with stone fireplace"
+          fill
+          priority
+          className="object-cover"
+        />
       </motion.div>
 
       {/* Text block below image — centered */}
@@ -61,26 +62,6 @@ export default function Home() {
           clarity, and longevity. Based in Madison, Wisconsin.
         </motion.p>
 
-        <motion.div
-          variants={fadeUp(0.75)}
-          initial="hidden"
-          animate="visible"
-          className="mt-10 flex items-center justify-center gap-10"
-        >
-          <Link
-            href="/work"
-            className="group inline-flex items-center gap-3 text-sm tracking-widest uppercase text-white transition-opacity hover:opacity-70"
-          >
-            View Work
-            <span className="block h-px w-10 bg-white transition-all duration-300 group-hover:w-16" />
-          </Link>
-          <Link
-            href="/contact"
-            className="text-sm tracking-widest uppercase text-stone-400 transition-opacity hover:opacity-70"
-          >
-            Get in Touch
-          </Link>
-        </motion.div>
       </div>
     </div>
   );
